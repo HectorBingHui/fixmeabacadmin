@@ -1,7 +1,25 @@
+@import "../../styles/flexbox";
+@import "../../styles/mixins";
+@import "../../styles/bootstrap";
+
+
+.container{
+  text-align: center;
+  .loginbutton{
+   background-color: transparent;
+   color: #ec4141;
+   border: none;
+   font-family:sans-serif;
+   font-weight: bold;
+    
+  }
+  
+}
 .header {
-  // background-color: #5c96c9;
+  @include flexbox();
+  background-color: #1D5A67;
+  text-align: center;
   margin-bottom: 20px;
-  display: flex;
   position: relative;
   height: 50px;
   width: 100%;
@@ -10,22 +28,53 @@
 }
 
 .brand {
+  padding: 15px 10px;
   text-align: center;
+  color: white;
+  a {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+  &:hover{
+  
+    text-decoration: none;
+    color:  rgba(255, 255, 255, 0.432);
+  }
+  } // background-color: #1D5A67;
+}
+
+.profile{
+  @include flexbox();
+  text-align: center;
+  color: white;
+  padding-top: 5px;
+  .name{
+    padding:8px;
+  }
+  .image{
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 100%;
+
+  }
 }
 
 .login {
+  @include flexbox();
   position: absolute;
   right: 1px;
   cursor: pointer;
-
   button {
+    color: white;
     height: 50px;
     width: 100px;
-    background-color: #5c96c1;
-    border-radius: 0px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    &:hover{
-        cursor: pointer;
+    &:hover {
+      cursor: pointer;
+      color:  rgba(255, 255, 255, 0.432);
     }
   }
 }

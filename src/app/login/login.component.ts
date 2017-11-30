@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.userProfile = user;
-        console.log(user)
+        console.log(user);
       }
-    })
+    });
   }
 
   ngOnInit() {
@@ -44,10 +44,15 @@ export class LoginComponent implements OnInit {
   }
 
   fetchData() {
-   this.feeds =  this.afdb.list('report/open').valueChanges()
-   console.log(this.feeds)
+   this.feeds =  this.afdb.list('report/open').valueChanges();
+   console.log(this.feeds);
   }
 
+
+  logout() {
+    this.afAuth.auth.signOut();
+    this.login = false;
+  }
 
 
 }

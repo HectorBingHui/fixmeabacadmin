@@ -1,13 +1,16 @@
+import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SafeHtmlPipe } from '../app/feeds/feeds.component';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { LoginComponent } from './login/login.component';
 import { FeedsComponent } from './feeds/feeds.component';
+
 
 
 export const firebaseConfig = {
@@ -24,11 +27,22 @@ export const firebaseConfig = {
     AppComponent,
     LoginComponent,
     FeedsComponent,
-    SafeHtmlPipe
+
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+      path: 'home',
+      component: LoginComponent
+    }]),
     AngularFireModule.initializeApp(firebaseConfig),
+
   ],
   providers: [AngularFireAuth, AngularFireDatabase],
   bootstrap: [AppComponent]

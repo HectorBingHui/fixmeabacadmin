@@ -1,15 +1,23 @@
 <div class="container">
   <div class="card-container">
+    <div class="title">
+      <div>Reported feeds from ABAC's members</div>
+    </div>
     <div *ngFor="let f of feeds | async , let index = i " class="card">
       <div class="department"> {{f?.department}} </div>
       <img src="{{f.image}}">
       <div class="detail">
-        <div class="topic"> {{f?.topic}} </div>
+        <div class="fixbox">
+          <div class="topic"> {{f?.topic}} </div>
+          <div class="fixbutton">
+            <button> Fix ? </button>
+          </div>
+        </div>
         <div class="description"> {{f?.description}} </div>
         <div class="footer">
-          <div class="location"> {{f?.location}} </div>
+          <div class="location">Building : {{f?.location}} </div>
 
-          <div class="date">| {{f?.date}} </div>
+          <div class="date">| Reported on : {{f?.date | slice:0:10 }} </div>
         </div>
       </div>
     </div>

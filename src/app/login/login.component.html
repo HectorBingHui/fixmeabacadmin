@@ -1,15 +1,42 @@
 <div class="header">
   <div class="brand">
-    <h2>FixmeABAC</h2> 
+    <a href="/">FixmeABAC</a>
   </div>
-  <div class="login">
+
+  <div class="login" *ngIf="!login">
     <button (click)="signInWithGoogle()"> Login</button>
+  </div>
+
+  <div class="login" *ngIf="login">
+    <div class="profile">
+      <div class="image">
+        <img class="image" [src]="userProfile?.photoURL">
+      </div>
+      <div class="name">{{userProfile?.displayName}}</div>
+    </div>
+    <button (click)="logout()"> Logout</button>
   </div>
 </div>
 
+
 <div *ngIf="!login">
   <div class="title" style="text-align:center">
-  <h3>Welcome to FixmeABAC,Admin site</h3>
+    <h3>Welcome to FixmeABAC,
+      <small>Admin : {{userProfile?.displayName}} </small>
+    </h3>
   </div>
   <app-feeds></app-feeds>
+</div>
+
+
+<div *ngIf="login" class="container">
+  <h3 style="font-weight:bold;"> For ABAC department's members only!
+    <br>
+    <small>Plese login to use this service</small>
+  </h3>
+  <br>
+
+  <img src="../assets/maintenance.gif">
+  <br>
+  <button (click)="signInWithGoogle()" class="loginbutton"> Login with your department email</button>
 </div>
