@@ -1,0 +1,53 @@
+@import "flexbox";
+
+.icon {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+
+    &.icon-measurement {
+        opacity: .4;
+        background: url("/assets/icons/measurement.svg") no-repeat center;
+    }
+
+    &.icon-bedroom {
+        opacity: .4;
+        background: url("/assets/icons/bedroom.svg") no-repeat center;
+    }
+
+    &.icon-bathroom {
+        opacity: .4;
+        background: url("/assets/icons/bathroom.svg") no-repeat center;
+    }
+
+    &.icon-type {
+        background: url("/assets/icons/type.svg") no-repeat center;
+        filter: grayscale(100%);
+        opacity: 0.8;
+    }
+
+    &.icon-project {
+        background: url("/assets/icons/project.svg") no-repeat center;
+        filter: grayscale(100%);
+        opacity: 0.8;
+    }
+
+     &.icon-project-detail {
+        background: url("/assets/icons/project.svg") no-repeat center;
+        opacity: 0.8;
+    }
+
+    &.icon-sale {
+        background: url("/assets/icons/sale.svg") no-repeat center;
+        opacity: 0.8;
+    }
+
+    &.icon-unit{
+        background: url("/assets/icons/unit.svg") no-repeat center;
+        opacity: 0.8;
+    }
+    &.icon-menu{
+        background: url("/assets/icons/menu.svg") no-repeat center;
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,82 @@
+@import "flexbox";
+
+html.embed .container {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+html.embed .filter-dropdown {
+  .filter-name {
+    font-size: 0.7em !important;
+  }
+}
+
+html.embed fys-property-card-list {
+  transform: scale(0.75);
+  transform-origin: 0 0;
+  width: 134%;
+}
+
+html.embed .search-container {
+  @include flex-direction(row);
+  margin: 5px !important;
+
+  .side-panel {
+    width: 25% !important;
+    font-size: 0.7em;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    .filter {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+
+  .property-container {
+    width: 75% !important;
+  }
+
+  .card.card-horizontal {
+    .card-container {
+      @include flex-direction(row);
+    }
+
+    .card-thumbnail {
+      @include flex-basis(30%);
+    }
+
+    .card-sidebar {
+      @include flex-basis(70%);
+
+      .address {
+        margin-bottom: auto !important;
+      }
+
+      .details {
+        @include flex-direction(row);
+        margin-bottom: 8px !important;
+      }
+
+      .details .notes {
+        flex-direction: row !important;
+        margin: 0 auto 0 0 !important;
+      }
+    }
+
+    .card-price .property-price em {
+      font-size: 0.7em !important;
+    }
+  }
+}
+
+html.embed {
+  fys-search-dynamic-filter, fys-search-dynamic-filter.inactive {
+    @include flexbox();
+  }
+
+  .filter-show, .filter-hide {
+    display: none;
+  }
+}

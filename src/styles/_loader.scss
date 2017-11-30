@@ -1,0 +1,195 @@
+@import "../styles/animations";
+
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 1);
+  transition: all .4s ease-out;
+
+  #loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3498db;
+    @include animation(spin 2s linear infinite);
+    z-index: 1001;
+    opacity: 1;
+    transition: all .2s ease-out;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #e74c3c;
+      @include animation(spin 3s linear infinite);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #f9c922;
+      @include animation(spin 1.5s linear infinite);
+    }
+  }
+}
+
+.loaded #loader {
+  opacity: 0;
+}
+
+.loaded #loader-wrapper {
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0);
+}
+
+.loader {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #3498db;
+  @include animation(spin 2s linear infinite);
+  z-index: 1001;
+  opacity: 1;
+  transition: all .2s ease-out;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #e74c3c;
+    @include animation(spin 3s linear infinite);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f9c922;
+    @include animation(spin 1.5s linear infinite);
+  }
+}
+
+.loading_dots {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 1em; /* set size here */
+  line-height: 1;
+  padding: 0.125em 0 0.175em 0.55em;
+}
+
+.loading_dots span {
+  background: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  height: 0.6em;
+  width: 0.6em;
+  margin-right: 5px;
+
+  -webkit-animation: loading_dots 0.8s linear infinite;
+  -moz-animation: loading_dots 0.8s linear infinite;
+  -ms-animation: loading_dots 0.8s linear infinite;
+  animation: loading_dots 0.8s linear infinite;
+}
+
+.loading_dots span:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -ms-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.loading_dots span:nth-child(1) {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  -ms-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+/*
+  Define the animation for every efing vendor prefix
+*/
+@-webkit-keyframes loading_dots {
+  0% {
+    background: transparent;
+  }
+  50% {
+    background: #333;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@-moz-keyframes loading_dots {
+  0% {
+    background: transparent;
+  }
+  50% {
+    background: #333;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@-ms-keyframes loading_dots {
+  0% {
+    background: transparent;
+  }
+  50% {
+    background: #333;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes loading_dots {
+  0% {
+    background: transparent;
+  }
+  50% {
+    background: #333;
+  }
+  100% {
+    background: transparent;
+  }
+}

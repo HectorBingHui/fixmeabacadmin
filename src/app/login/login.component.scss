@@ -1,0 +1,31 @@
+.header {
+  // background-color: #5c96c9;
+  margin-bottom: 20px;
+  display: flex;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.brand {
+  text-align: center;
+}
+
+.login {
+  position: absolute;
+  right: 1px;
+  cursor: pointer;
+
+  button {
+    height: 50px;
+    width: 100px;
+    background-color: #5c96c1;
+    border-radius: 0px;
+    cursor: pointer;
+    &:hover{
+        cursor: pointer;
+    }
+  }
+}
