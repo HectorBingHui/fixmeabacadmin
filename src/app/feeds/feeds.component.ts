@@ -1,18 +1,12 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { Report } from '../models/report';
 
-@Pipe({ name: 'safeHtml' })
-export class SafeHtmlPipe implements PipeTransform {
-  constructor(private sanitized: DomSanitizer) { }
-  transform(value) {
-    return this.sanitized.bypassSecurityTrustResourceUrl(value);
-  }
-}
+
 
 @Component({
   selector: 'app-feeds',
@@ -28,12 +22,21 @@ export class FeedsComponent implements OnInit {
   postTobeClosed: any;
   date: string = new Date().toLocaleString();
   reportClosed: boolean;
+  islogin: boolean;
 
   constructor(
     private afAuth: AngularFireAuth,
     private afdb: AngularFireDatabase,
-    private domSanitizer: DomSanitizer
   ) {
+    this.islogin = false;
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.islogin = true;
+      }
+      if (!user) {
+        this.islogin = false;
+      }
+    });
   }
 
   ngOnInit() {
@@ -41,15 +44,16 @@ export class FeedsComponent implements OnInit {
   }
 
   fetchData() {
-    this.feeds = this.afdb.list('report/open').valueChanges();
-    this.afdb.list('report/open').snapshotChanges().subscribe(res => {
-      res.forEach(feed => {
-        this.postsPrefix.push(feed.key);
+    if (this.islogin = true) {
+      this.feeds = this.afdb.list('report/open').valueChanges();
+      this.afdb.list('report/open').snapshotChanges().subscribe(res => {
+        res.forEach(feed => {
+          this.postsPrefix.push(feed.key);
+        });
       });
-    });
-    console.log(this.postsPrefix);
+      console.log(this.postsPrefix);
+    }
   }
-
   fix(postID: any) {
     const itemRef = this.afdb.object('report/closed/' + this.postsPrefix[postID]);
     try {

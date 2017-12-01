@@ -1,7 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { SafeHtmlPipe } from '../app/feeds/feeds.component';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
