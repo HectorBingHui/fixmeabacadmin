@@ -5,6 +5,7 @@
 
 .container{
   text-align: center;
+  margin-top: 50px;
   .loginbutton{
    background-color: transparent;
    color: #ec4141;
@@ -19,12 +20,14 @@
   @include flexbox();
   background-color: #1D5A67;
   text-align: center;
-  margin-bottom: 20px;
-  position: relative;
+
+  position: absolute;
   height: 50px;
   width: 100%;
+  top:0;
   left: 0;
   right: 0;
+  margin-bottom: 80px;
 }
 
 .brand {

@@ -3,14 +3,14 @@
     <div class="title">
       <div>Reported feeds from ABAC's members</div>
     </div>
-    <div *ngFor="let f of feeds | async , let index = i " class="card">
+    <div *ngFor="let f of feeds | async , let i = index" class="card">
       <div class="department"> {{f?.department}} </div>
       <img src="{{f.image}}">
       <div class="detail">
         <div class="fixbox">
           <div class="topic"> {{f?.topic}} </div>
           <div class="fixbutton">
-            <button> Fix ? </button>
+            <button (click)="fix(i)"> Fix ? </button>
           </div>
         </div>
         <div class="description"> {{f?.description}} </div>

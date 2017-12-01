@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.userProfile = user;
-        console.log(user);
       }
     });
   }
@@ -52,6 +51,7 @@ export class LoginComponent implements OnInit {
   logout() {
     this.afAuth.auth.signOut();
     this.login = false;
+    this.userProfile = null;
   }
 
 
