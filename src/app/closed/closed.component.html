@@ -10,7 +10,7 @@
         <div class="fixbox">
           <div class="topic"> {{f?.topic}} </div>
           <div class="fixbutton">
-            <button (click)="fix(i)"> Fix ? </button>
+            <div class="date">Fixed on : {{f?.fix_date | slice:0:10}} </div> 
           </div>
         </div>
         <div class="description"> {{f?.description}} </div>
