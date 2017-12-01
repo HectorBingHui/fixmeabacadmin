@@ -51,16 +51,18 @@ export class FeedsComponent implements OnInit {
           this.postsPrefix.push(feed.key);
         });
       });
-      console.log(this.postsPrefix);
     }
   }
   fix(postID: any) {
     const itemRef = this.afdb.object('report/closed/' + this.postsPrefix[postID]);
     try {
-      this.afdb.list('report/open/' + this.postsPrefix[postID]).valueChanges().
+      this.afdb.object('report/open/' + this.postsPrefix[postID]).valueChanges().
         subscribe(res => itemRef.update(res).then(_ =>
           console.log('Reported issues closed!'))
         );
+      this.report = new Report;
+      this.report.fix_date = this.date;
+      itemRef.update(this.report);
       this.toRemove(postID);
     } catch (error) {
       console.log('sth wrong!');
@@ -69,7 +71,7 @@ export class FeedsComponent implements OnInit {
   }
 
   toRemove(postID) {
-    this.afdb.list('report/open/' + this.postsPrefix[postID]).remove();
+    this.afdb.list('report/open/' + this.postsPrefix[postID]).remove().then(_ => console.log('feeds removed'));
   }
 
 

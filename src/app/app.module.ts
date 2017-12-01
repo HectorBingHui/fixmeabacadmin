@@ -9,6 +9,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { LoginComponent } from './login/login.component';
 import { FeedsComponent } from './feeds/feeds.component';
+import { ClosedComponent } from './closed/closed.component';
 
 
 
@@ -26,6 +27,7 @@ export const firebaseConfig = {
     AppComponent,
     LoginComponent,
     FeedsComponent,
+    ClosedComponent,
 
   ],
   imports: [

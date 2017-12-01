@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card-container">
+    <div class="title">
+      <div>Reported feeds from ABAC's members</div>
+    </div>
+    <div *ngFor="let f of feeds | async , let i = index" class="card">
+      <div class="department"> {{f?.department}} </div>
+      <img src="{{f.image}}">
+      <div class="detail">
+        <div class="fixbox">
+          <div class="topic"> {{f?.topic}} </div>
+          <div class="fixbutton">
+            <button (click)="fix(i)"> Fix ? </button>
+          </div>
+        </div>
+        <div class="description"> {{f?.description}} </div>
+        <div class="footer">
+          <div class="location">Building : {{f?.location}} </div>
+
+          <div class="date">| Reported on : {{f?.date | slice:0:10 }} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

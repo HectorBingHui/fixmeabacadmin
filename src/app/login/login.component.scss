@@ -1,68 +1,78 @@
 @import "../../styles/flexbox";
 @import "../../styles/mixins";
 @import "../../styles/bootstrap";
-
-
-.container{
+.container {
   text-align: center;
   margin-top: 50px;
-  .loginbutton{
-   background-color: transparent;
-   color: #ec4141;
-   border: none;
-   font-family:sans-serif;
-   font-weight: bold;
-    
+  .loginbutton {
+    background-color: transparent;
+    color: #ec4141;
+    border: none;
+    font-family: sans-serif;
+    font-weight: bold;
   }
-  
 }
+
 .header {
   @include flexbox();
   background-color: #1D5A67;
   text-align: center;
-
   position: absolute;
   height: 50px;
   width: 100%;
-  top:0;
+  top: 0;
   left: 0;
   right: 0;
   margin-bottom: 80px;
 }
 
 .brand {
+  @include flexbox();
+  @include flex-direction(row);
   padding: 15px 10px;
   text-align: center;
   color: white;
-  a {
+  button {
     color: white;
-    font-weight: bold;
-    font-size: 1.2em;
-  &:hover{
-  
-    text-decoration: none;
-    color:  rgba(255, 255, 255, 0.432);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.432);
+    }
   }
-  } // background-color: #1D5A67;
+
+a {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-right:15px;
+  border-right: 1px solid white;
+  &:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.432);
+  }
 }
 
-.profile{
+
+}
+.profile {
   @include flexbox();
   text-align: center;
   color: white;
   padding-top: 5px;
-  .name{
-    padding:8px;
+  .name {
+    padding: 8px;
   }
-  .image{
+
+  .image {
     height: 40px;
     width: 40px;
     margin-right: 10px;
     border-radius: 100%;
-
   }
 }
-
 .login {
   @include flexbox();
   position: absolute;
@@ -77,7 +87,7 @@
     cursor: pointer;
     &:hover {
       cursor: pointer;
-      color:  rgba(255, 255, 255, 0.432);
+      color: rgba(255, 255, 255, 0.432);
     }
   }
 }

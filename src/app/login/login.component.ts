@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   login: boolean;
   userProfile: any;
   feeds: Observable<any[]>;
+  openFeed: boolean;
+  closedFeed: boolean;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.login = false;
+    this.openFeed = true;
     this.fetchData();
 
   }
@@ -36,15 +39,15 @@ export class LoginComponent implements OnInit {
     try {
       const result = this.afAuth.auth
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        .then(res => this.login = true );
-      }catch (e) {
+        .then(res => this.login = true);
+    } catch (e) {
       console.error(e);
     }
   }
 
   fetchData() {
-   this.feeds =  this.afdb.list('report/open').valueChanges();
-   console.log(this.feeds);
+    this.feeds = this.afdb.list('report/open').valueChanges();
+    console.log(this.feeds);
   }
 
 
@@ -54,5 +57,13 @@ export class LoginComponent implements OnInit {
     this.userProfile = null;
   }
 
+  open() {
+    this.openFeed = true;
+    this.closedFeed = false;
+  }
+  closed() {
+    this.closedFeed = true;
+    this.openFeed = false;
+  }
 
 }
