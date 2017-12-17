@@ -4,7 +4,7 @@
       <div style="color:red"><b>To be Fixed issues :</b></div>
     </div>
     <div *ngFor="let f of feeds | async , let i = index" class="card">
-      <div class="department"> {{f?.department}} </div>
+      <div class="department"> Department: {{f?.department}} </div>
       <div class="image"><img src="{{f.image}}"></div>
       <div class="detail">
         <div class="fixbox">
