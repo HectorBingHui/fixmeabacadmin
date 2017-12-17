@@ -5,15 +5,15 @@
     </div>
     <div *ngFor="let f of feeds | async , let i = index" class="card">
       <div class="department"> {{f?.department}} </div>
-      <img src="{{f.image}}">
+      <div class="image"><img src="{{f.image}}"></div>
       <div class="detail">
         <div class="fixbox">
-          <div class="topic"> {{f?.topic}} </div>
+          <div class="topic"> {{f?.topic }} </div>
           <div class="fixbutton">
             <div class="date">Fixed on : {{f?.fix_date | slice:0:10}} </div> 
           </div>
         </div>
-        <div class="description"> {{f?.description}} </div>
+        <div class="description"> {{f?.description | slice:0:100}} </div>
         <div class="footer">
           <div class="location">Building : {{f?.location}} </div>
 

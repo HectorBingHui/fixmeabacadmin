@@ -53,7 +53,10 @@ export class FeedsComponent implements OnInit {
       });
     }
   }
+
   fix(postID: any) {
+    const message = window.confirm('Are you sure you want to close this issue?');
+    if (message === true) {
     const itemRef = this.afdb.object('report/closed/' + this.postsPrefix[postID]);
     try {
       this.afdb.object('report/open/' + this.postsPrefix[postID]).valueChanges().
@@ -67,6 +70,10 @@ export class FeedsComponent implements OnInit {
     } catch (error) {
       console.log('sth wrong!');
 
+    }
+
+    }else {
+    console.log('User cancel selection');
     }
   }
 

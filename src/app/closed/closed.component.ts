@@ -37,3 +37,4 @@ export class ClosedComponent implements OnInit {
   }
 
 }
+}

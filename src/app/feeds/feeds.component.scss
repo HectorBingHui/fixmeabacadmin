@@ -1,12 +1,18 @@
 @import "../../styles/flexbox";
 @import "../../styles/mixins";
 @import "../../styles/bootstrap";
-img {
+.image{
+  text-align: center;
+  img{
   height: 250px;
+  max-width: 250px;
+  @media (min-width: $screen-desktop) {
   max-width: 300px;
+  }
+}
 }
 
-.title{
+.title {
   @include make-lg-column(12);
   @include make-md-column(12);
   @include make-sm-column(12);
@@ -14,45 +20,59 @@ img {
   font-size: 1.2em;
   font-weight: bold;
   font-family: open sens;
-  padding:10px;
+  padding: 10px;
 }
 
 .card-container {
   @include flexbox();
-   border: 3px solid white;
+  overflow: none;
   margin: 0 0 30px 0;
   padding: 0 50px;
   width: 100%;
   text-align: center;
+
   @include flex-wrap(wrap);
-  border:solid 0.5px #245a52;
-  @media (min-width: $screen-desktop) {}
-
-  margin:0 ;
-
-}
-
-.fixbox{
-  @include flexbox();
-  position: relative;
-  .fixbutton{
-    padding:10px;
-  button{
-    position: absolute;
-    top:5px;
-    right: 5px;
-    background-color: #5c96c9;
-    border-radius: 10px;
-    color: white;
-    border: none;
+  @media (min-width: $screen-tablet) {
+    overflow: none;
+    padding: 0px;
+    margin:0px;
   }
 }
+
+.fixbox {
+  @include flexbox();
+  position: relative;
+  .fixbutton {
+    padding: 10px;
+    button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #5c96c9;
+      border-radius: 0px;
+      color: white;
+      border-color: #5c96c9;
+      &:hover{
+        background-color: white;
+        border-color: #5c96c9;
+        color: #5c96c9;
+      }
+    }
+    .date{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  }
 }
+
 .card {
   margin: 20px;
+  overflow: none;
   background-color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: justify;
+  max-width: 300px;
   &:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
@@ -80,7 +100,6 @@ img {
     border: 1px solid rgba(0, 0, 0, 0.05);
     .location {
       width: 100px;
-
     }
   }
 }

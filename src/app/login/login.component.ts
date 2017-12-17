@@ -24,12 +24,14 @@ export class LoginComponent implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.userProfile = user;
+        this.login = true;
+      } else {
+        this.login = false;
       }
     });
   }
 
   ngOnInit() {
-    this.login = false;
     this.openFeed = true;
     this.fetchData();
 
