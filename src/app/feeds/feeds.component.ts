@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 
 import { Report } from '../models/report';
+import { User } from '../user';
 
 
 
@@ -23,6 +24,12 @@ export class FeedsComponent implements OnInit {
   date: string = new Date().toLocaleString();
   reportClosed: boolean;
   islogin: boolean;
+  openReportNo: any = 0 ;
+  totalReportNo: any = 0 ;
+  closedReportNo: any = 0 ;
+  user: firebase.User;
+  addUser: User;
+
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -40,6 +47,7 @@ export class FeedsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.afAuth.auth.currentUser;
     this.fetchData();
   }
 
@@ -57,28 +65,45 @@ export class FeedsComponent implements OnInit {
   fix(postID: any) {
     const message = window.confirm('Are you sure you want to close this issue?');
     if (message === true) {
-    const itemRef = this.afdb.object('report/closed/' + this.postsPrefix[postID]);
-    try {
-      this.afdb.object('report/open/' + this.postsPrefix[postID]).valueChanges().
-        subscribe(res => itemRef.update(res).then(_ =>
-          console.log('Reported issues closed!'))
-        );
-      this.report = new Report;
-      this.report.fix_date = this.date;
-      itemRef.update(this.report);
-      this.toRemove(postID);
-    } catch (error) {
-      console.log('sth wrong!');
+      const itemRef = this.afdb.object('report/closed/' + this.postsPrefix[postID]);
+      try {
+        this.afdb.object('report/open/' + this.postsPrefix[postID]).valueChanges().
+          subscribe(res => itemRef.update(res).then(_ =>
+            console.log('Reported issues closed!'))
+          );
+        this.report = new Report;
+        this.report.fix_date = this.date;
+        itemRef.update(this.report);
+        this.toRemove(postID);
+        this.addUserStat();
+      } catch (error) {
+        console.log('sth wrong!');
 
-    }
+      }
 
-    }else {
-    console.log('User cancel selection');
+    } else {
+      console.log('User cancel selection');
     }
   }
 
   toRemove(postID) {
     this.afdb.list('report/open/' + this.postsPrefix[postID]).remove().then(_ => console.log('feeds removed'));
+  }
+
+
+  addUserStat() {
+    this.addUser = new User;
+    const userRef = this.afdb.object('user/' + this.user.uid);
+    this.afdb.list('user/' + this.user.uid).valueChanges().subscribe(res => {
+      this.closedReportNo = res[0];
+      this.openReportNo = res[3];
+      this.totalReportNo = res[5];
+      this.addUser.openNo = Number(this.openReportNo) - 1 ;
+      this.addUser.closeNo = Number(this.closedReportNo)  + 1;
+      this.totalReportNo = Number(this.addUser.openNo + this.addUser.closeNo) ;
+      this.addUser.reportNo = this.totalReportNo;
+      userRef.update(this.addUser);
+    });
   }
 
 
