@@ -10,15 +10,15 @@
         <div class="fixbox">
           <div class="topic"> {{f?.topic }} </div>
           <div class="fixbutton">
-            <div class="date">Fixed on : {{f?.fix_date | slice:0:10}} </div> 
+            <div class="date">
+                <div class="location"> <i class="fas fa-check-circle"></i>{{f?.fix_date | slice:0:10}} </div></div> 
           </div>
         </div>
         <div class="description"> {{f?.description | slice:0:100}} </div>
         <div class="footer">
-          <div class="location">Building : {{f?.location}} </div>
-
-          <div class="date">| Reported on : {{f?.date | slice:0:10 }} </div>
-        </div>
+            <div class="location"><i class="fas fa-building"></i> : {{f?.location}} </div>
+            <div class="date"> <i class="fas fa-flag"></i> : {{f?.date | slice:0:10 }} </div>
+          </div>
       </div>
     </div>
   </div>
